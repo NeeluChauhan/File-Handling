@@ -10,11 +10,13 @@ public class FileHandling {
         try {
             BufferedReader bf = new BufferedReader(new FileReader("name.txt"));
             String line;
+            int count=0;
             while ((line = bf.readLine()) != null) {
-                if (!line.isEmpty()) {
-                   String[] data= line.split(" ");
+                if (line.isEmpty()) {
+                   count++;
                 }
             }
+            System.out.println("Empty lines: " +count);
             bf.close();
         }
         catch (FileNotFoundException e) {
@@ -22,5 +24,6 @@ public class FileHandling {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
