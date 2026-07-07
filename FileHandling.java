@@ -1,7 +1,5 @@
 package FIleHandling;
 import java.io.*;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class FileHandling {
     public static void main(String[] args) {
@@ -10,13 +8,16 @@ public class FileHandling {
         try {
             BufferedReader bf = new BufferedReader(new FileReader("name.txt"));
             String line;
-            int count=0;
+            String longestLine= "";
+            int length=0;
             while ((line = bf.readLine()) != null) {
-                if (line.isEmpty()) {
-                   count++;
+                if (line.length()>length) {
+                    longestLine= line;
+                    length= line.length();
                 }
             }
-            System.out.println("Empty lines: " +count);
+            System.out.println("Longest line is " +longestLine);
+            System.out.println("It's length is: " +length);
             bf.close();
         }
         catch (FileNotFoundException e) {
