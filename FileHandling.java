@@ -4,21 +4,18 @@ import java.util.Scanner;
 
 public class FileHandling {
     public static void main(String[] args) {
-        File file = new File("name.txt");
         try {
-            BufferedReader br= new BufferedReader(new FileReader("name.txt"));
-                BufferedWriter bw= new BufferedWriter(new FileWriter("copy.txt"));
-                String line;
-                while ((line= br.readLine())!=null){
-                    bw.write(line);
-                    bw.newLine();
-                }
-                bw.close();
-                br.close();
+            FileInputStream fis= new FileInputStream("Neelu_Chauhan_Resume.pdf");
+            FileOutputStream fos= new FileOutputStream("Neelu_Chauhan_Resume_copy.pdf");
+            int data;
+            while ((data=fis.read())!=-1){
+                fos.write(data);
+            }
+            fos.close();
+            fis.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
